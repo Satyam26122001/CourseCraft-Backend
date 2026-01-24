@@ -1,0 +1,33 @@
+HELP.md
+
+# Maven
+/target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse / STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Secrets (do not commit)
+src/main/resources/application-local.properties
+src/main/resources/application-*-local.properties

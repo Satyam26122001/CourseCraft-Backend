@@ -22,12 +22,11 @@ public class SecurityConfig {
         http.sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/health", "/contactus").permitAll()
+        		.requestMatchers("/", "/health").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated()
         );
 
-        // Disable default Spring Security login page
         http.formLogin(form -> form.disable());
         http.httpBasic(basic -> basic.disable());
 

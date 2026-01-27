@@ -24,10 +24,10 @@ public class CorsConfig {
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
 
-        // JWT header allow
+      
         config.setExposedHeaders(List.of("Authorization"));
 
-        // If you are NOT using cookies, keep false
+        // If cookies, set true else keep false
         config.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

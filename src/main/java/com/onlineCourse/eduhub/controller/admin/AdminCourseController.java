@@ -55,6 +55,18 @@ public class AdminCourseController {
         ));
     }
     
+    @GetMapping
+    public ResponseEntity<?> getAllCourses() {
+
+        var courses = courseRepository.findAll();
+
+        return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "Courses fetched successfully",
+                "count", courses.size(),
+                "data", courses
+        ));
+    }
     
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCourse(@PathVariable Integer id,

@@ -13,6 +13,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,10 +49,12 @@ public class Enrollment {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "enrolled_at", nullable = false, updatable = false)
     private Instant enrolledAt;
 
     // 0 to 100
+    @Min(0)
+    @Max(100)
     @Column(nullable = false)
     private Integer progress;
 

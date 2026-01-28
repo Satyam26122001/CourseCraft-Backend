@@ -60,7 +60,7 @@ public class Enrollment {
     @Max(100)
     @Column(nullable = false)
     private Integer progress;
-
+    
     @PrePersist
     public void onCreate() {
         if (enrolledAt == null) enrolledAt = Instant.now();

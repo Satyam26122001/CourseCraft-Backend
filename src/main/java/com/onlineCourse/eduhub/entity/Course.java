@@ -1,5 +1,7 @@
 package com.onlineCourse.eduhub.entity;
 
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -65,6 +67,9 @@ public class Course {
     @Size(min = 3, max = 100, message = "Trainer name must be between 3 and 100 characters")
     @Column(nullable = false)
     private String trainer;
+    
+    @Column(nullable = false)
+    private LocalDateTime publishedAt;
 
     @Transient
     private boolean isEnrolled;

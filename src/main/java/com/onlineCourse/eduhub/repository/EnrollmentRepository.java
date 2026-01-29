@@ -1,5 +1,6 @@
 package com.onlineCourse.eduhub.repository;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +25,17 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Integer>
         List<Integer> findEnrolledCourseIds(@Param("email") String email);
     
     Optional<Enrollment> findByUserIdAndCourseId(Integer userId, Integer courseId);
+    
+    @Query("SELECT COUNT(e) FROM Enrollment e")
+    long countEnrollments();
+
+    @Query("""
+        SELECT COALESCE(SUM(c.price), 0)
+        FROM Enrollment e
+        JOIN e.course c
+    """)
+    Long totalRevenue();
+
+    @Query("SELECT MAX(e.enrolledAt) FROM Enrollment e")
+    Instant lastEnrollment();
 }

@@ -1,11 +1,13 @@
 package com.onlineCourse.eduhub.repository;
 
-import com.onlineCourse.eduhub.entity.Course;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+import com.onlineCourse.eduhub.entity.Course;
 
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
@@ -17,4 +19,10 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
         ORDER BY c.rating DESC
     """)
     List<Course> searchCourses(@Param("keyword") String keyword);
+    
+    @Query("SELECT COUNT(c) FROM Course c")
+    long countCourses();
+    
+    @Query("SELECT MAX(c.publishedAt) FROM Course c")
+    LocalDateTime lastCoursePublished();
 }
